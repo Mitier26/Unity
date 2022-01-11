@@ -19,12 +19,6 @@ public class Waypoint : MonoBehaviour
         _currentPosition = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnDrawGizmos()
     {
         if(!_gameStarted && transform.hasChanged)

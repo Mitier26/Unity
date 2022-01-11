@@ -9,15 +9,15 @@ public enum SpawnMode
 
 public class Spawner : MonoBehaviour
 {
-    [Header("¼¼ÆÃ")]
+    [Header("ì„¸íŒ…")]
     [SerializeField] private SpawnMode spawnMode = SpawnMode.Fixed;
     [SerializeField] private int enemyCount = 10;
     [SerializeField] private GameObject testGO;
 
-    [Header("°íÁ¤ µô·¹ÀÌ")]
+    [Header("ê³ ì • ë”œë ˆì´")]
     [SerializeField] private float delayBtwSpawns;
 
-    [Header("·£´ı µô·¹ÀÌ")]
+    [Header("ëœë¤ ë”œë ˆì´")]
     [SerializeField] private float minRandomDelay;
     [SerializeField] private float maxRandomDelay;
 
