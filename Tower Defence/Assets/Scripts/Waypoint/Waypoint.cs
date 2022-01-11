@@ -9,6 +9,7 @@ public class Waypoint : MonoBehaviour
     public Vector3[] Points => points;
     public Vector3 CurrentPosition => _currentPosition;
 
+    [SerializeField]
     private Vector3 _currentPosition;
     private bool _gameStarted;
 
@@ -17,6 +18,11 @@ public class Waypoint : MonoBehaviour
     {
         _gameStarted = true;
         _currentPosition = transform.position;
+    }
+
+    public Vector3 GetWaypointPosition(int index)
+    {
+        return CurrentPosition + Points[index];
     }
 
     void OnDrawGizmos()
