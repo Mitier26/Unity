@@ -105,11 +105,13 @@ public class Spawner : MonoBehaviour
     void OnEnable()
     {
         Enemy.OnEndReached += RecordEnemy;
+        EnemyHealth.OnEnemykilled += RecordEnemy;
     }
 
     void OnDisable()
     {
         Enemy.OnEndReached -= RecordEnemy;
+        EnemyHealth.OnEnemykilled -= RecordEnemy;
     }
 
     
