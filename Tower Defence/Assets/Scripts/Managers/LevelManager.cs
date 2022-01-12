@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
         TotalLives = lives;
     }
 
-    void ReduceLives()
+    void ReduceLives(Enemy enemy)
     {
         TotalLives--;
         if(TotalLives <= 0)

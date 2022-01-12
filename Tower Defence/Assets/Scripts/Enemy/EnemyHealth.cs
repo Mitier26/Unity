@@ -6,7 +6,8 @@ using System;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public static Action OnEnemykilled;
+    public static Action<Enemy> OnEnemykilled;
+    public static Action<Enemy> OnEnemyHit;
 
     [SerializeField] private GameObject healthBarPrefab;
     [SerializeField] private Transform barPosition;
@@ -17,11 +18,14 @@ public class EnemyHealth : MonoBehaviour
     public float CurrentHealth{ get; set; }
 
     private Image _healthBar;
+    private Enemy _enemy;
 
     private void Start() 
     {
         CreateHealthBar();
         CurrentHealth = initiaHealth;
+
+        _enemy = GetComponent<Enemy>();
     }
 
     private void Update() {
@@ -49,6 +53,10 @@ public class EnemyHealth : MonoBehaviour
             CurrentHealth = 0;
             Die();
         }
+        else
+        {
+            OnEnemyHit?.Invoke(_enemy);
+        }
     }
 
     public void ResetHealth()
@@ -59,9 +67,6 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        ResetHealth();
-        OnEnemykilled?.Invoke();
-
-        ObjectPooler.ReturnToPool(gameObject);
+        OnEnemykilled?.Invoke(_enemy);
     }
 }
