@@ -8,9 +8,10 @@ public class Enemy : MonoBehaviour
     public static Action OnEndReached;
 
     [SerializeField] float moveSpeed = 3f;
-    [SerializeField] Waypoint waypoint;
 
-    public Vector3 CurrentPointPosition => waypoint.GetWaypointPosition(_currentWaypointIndex);
+    public Waypoint Waypoint { get; set; }
+
+    public Vector3 CurrentPointPosition => Waypoint.GetWaypointPosition(_currentWaypointIndex);
 
     private int _currentWaypointIndex;
 
@@ -48,7 +49,7 @@ public class Enemy : MonoBehaviour
 
     void UpdateCurrentPointIndex()
     {
-        int lastWayPointIndex = waypoint.Points.Length-1;
+        int lastWayPointIndex = Waypoint.Points.Length-1;
 
         if(_currentWaypointIndex < lastWayPointIndex)
         {
@@ -64,5 +65,10 @@ public class Enemy : MonoBehaviour
     {
         OnEndReached?.Invoke();
         ObjectPooler.ReturnToPool(gameObject);
+    }
+
+    public void ResetEnemy()
+    {
+        _currentWaypointIndex = 0;
     }
 }
