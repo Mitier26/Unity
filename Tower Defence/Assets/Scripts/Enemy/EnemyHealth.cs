@@ -29,11 +29,7 @@ public class EnemyHealth : MonoBehaviour
     }
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            DealDamege(5);
-        }
-
+     
         _healthBar.fillAmount = Mathf.Lerp(_healthBar.fillAmount , CurrentHealth/maxHealth, Time.deltaTime *10f);
     }
     void CreateHealthBar()
