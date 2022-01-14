@@ -4,42 +4,64 @@ using UnityEngine;
 
 public class TurretProjectile : MonoBehaviour
 {
-    [SerializeField] private Transform projectileSpawnPosition;
+    [SerializeField] protected Transform projectileSpawnPosition;
+    [SerializeField] protected float delayBtwAttack = 2f;
 
-    private ObjectPooler _pooler;
-    private Projectile _currentProjectileLoaded;
-    private Turret _turret;
+    protected float _nextAttackTime;
+    protected ObjectPooler _pooler;
+    protected Projectile _currentProjectileLoaded;
+    protected Turret _turret;
 
     private void Start() 
     {
         _pooler = GetComponent<ObjectPooler>();
         _turret = GetComponent<Turret>();
+
+        LoadProjectile();
     }
 
-    void Update()
+    protected virtual void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G))
+        if(IsTurretEmpty())
         {
             LoadProjectile();
         }
 
-        if(_turret.CurrentEnemyTarget != null && _currentProjectileLoaded != null 
-        && _turret.CurrentEnemyTarget.EnemyHealth.CurrentHealth > 0f)
+        if(Time.time > _nextAttackTime)
         {
-            _currentProjectileLoaded.transform.parent = null;
-            _currentProjectileLoaded.SetEnemy(_turret.CurrentEnemyTarget);
+            if (_turret.CurrentEnemyTarget != null && _currentProjectileLoaded != null && 
+            _turret.CurrentEnemyTarget.EnemyHealth.CurrentHealth > 0f)
+            {
+                _currentProjectileLoaded.transform.parent = null;
+                _currentProjectileLoaded.SetEnemy(_turret.CurrentEnemyTarget);
+            }
+
+            _nextAttackTime = Time.time +delayBtwAttack;
         }
+        
 
     }
 
-    private void LoadProjectile()
+    protected virtual void LoadProjectile()
     {
         GameObject newInstance = _pooler.GetInstanceFromPool();
         newInstance.transform.localPosition = projectileSpawnPosition.position;
         newInstance.transform.SetParent(projectileSpawnPosition);
 
         _currentProjectileLoaded = newInstance.GetComponent<Projectile>();
+        _currentProjectileLoaded.TurretOwner = this;
+        _currentProjectileLoaded.ResetProjectile();
 
         newInstance.SetActive(true);
+    }
+
+    private bool IsTurretEmpty()
+    {
+        return _currentProjectileLoaded == null;
+    }
+
+    public void ResetTurretProjectile()
+    {
+        _currentProjectileLoaded = null;
     }
 }

@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 7776850337981128613}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7363969066602030116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 109935253783275137}
+  m_Layer: 0
+  m_Name: TextDamagePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &109935253783275137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7363969066602030116}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.05, y: -0.63, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7776850337981128613}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7776850337981128608
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,6 +74,7 @@ GameObject:
   - component: {fileID: 1290313020}
   - component: {fileID: 4864661741394726535}
   - component: {fileID: -3979127086961006343}
+  - component: {fileID: 3937652194395296390}
   - component: {fileID: 2609360463235578429}
   - component: {fileID: 4928868747603830478}
   m_Layer: 0
@@ -65,6 +96,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1052942617129831129}
+  - {fileID: 109935253783275137}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -179,6 +211,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c0b40c5724fd04287d6d0a32d07e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3937652194395296390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7776850337981128608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e676d0d2698a2242bdf626012eb8bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDamageSpawnPosition: {fileID: 109935253783275137}
 --- !u!61 &2609360463235578429
 BoxCollider2D:
   m_ObjectHideFlags: 0
