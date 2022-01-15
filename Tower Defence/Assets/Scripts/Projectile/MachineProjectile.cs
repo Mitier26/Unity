@@ -26,8 +26,8 @@ public class MachineProjectile : Projectile
             Enemy enemy = other.GetComponent<Enemy>();
             if(enemy.EnemyHealth.CurrentHealth > 0f)
             {
-                OnEnemyHit?.Invoke(enemy, damage);
-                enemy.EnemyHealth.DealDamege(damage);
+                OnEnemyHit?.Invoke(enemy, Damage);
+                enemy.EnemyHealth.DealDamege(Damage);
             }
 
             ObjectPooler.ReturnToPool(gameObject);
