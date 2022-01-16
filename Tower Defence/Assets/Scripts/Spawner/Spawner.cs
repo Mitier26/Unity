@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum SpawnMode
 {
@@ -9,6 +10,8 @@ public enum SpawnMode
 
 public class Spawner : MonoBehaviour
 {
+    public static Action OnWaveCompleted;
+
     [Header("세팅")]
     [SerializeField] private SpawnMode spawnMode = SpawnMode.Fixed;
     [SerializeField] private int enemyCount = 10;
@@ -81,7 +84,7 @@ public class Spawner : MonoBehaviour
 
     private float GetRandomDelay()
     {
-        float randomTimer = Random.Range(minRandomDelay, maxRandomDelay);
+        float randomTimer = UnityEngine.Random.Range(minRandomDelay, maxRandomDelay);
         return randomTimer;
     }
 
@@ -98,6 +101,7 @@ public class Spawner : MonoBehaviour
         _enemiesRemaining--;
         if(_enemiesRemaining <= 0)
         {
+            OnWaveCompleted?.Invoke();
             StartCoroutine(NextWave());
         }
     }

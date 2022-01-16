@@ -27,6 +27,12 @@ public class Node : MonoBehaviour
         Turret = turret;
     }
 
+    public void CloseAttackRangeSprite()
+    {
+        attackRangeSprite.SetActive(false);
+    }
+
+
     public bool IsEmpty()
     {
         return Turret == null;
@@ -45,7 +51,7 @@ public class Node : MonoBehaviour
     {
         if(!IsEmpty())
         {
-            CurrencySystem.Instance.AddCoins(Turret.TurretUpgrade.UpgradeCost);
+            CurrencySystem.Instance.AddCoins(Turret.TurretUpgrade.GetSellValue());
             Destroy(Turret.gameObject);
             Turret = null;
             attackRangeSprite.SetActive(false);
