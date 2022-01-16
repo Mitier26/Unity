@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Node : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static Action<Node> OnNodeSelected;
+
+    public Turret Turret { get; set; }
+
+    public void SetTurret(Turret turret)
     {
-        
+        Turret = turret;
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool IsEmpty()
     {
-        
+        return Turret == null;
+    }
+
+    public void SelectTurret()
+    {
+        OnNodeSelected?.Invoke(this);
     }
 }
