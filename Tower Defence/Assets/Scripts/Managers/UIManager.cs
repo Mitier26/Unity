@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -9,6 +10,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject turretShopPanel;
     [SerializeField] private GameObject nodeUIPanel;
     [SerializeField] private GameObject achievementPanel;
+    [SerializeField] private GameObject gameoverPanel;
 
     [Header("Text")]
     [SerializeField] private TextMeshProUGUI upgradeText;
@@ -17,6 +19,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI totalCoinsText;
     [SerializeField] private TextMeshProUGUI lifesText;
     [SerializeField] private TextMeshProUGUI currentWaveText;
+    [SerializeField] private TextMeshProUGUI gameoverTotalCoinsText;
 
     private Node _currentNodeSelected;
 
@@ -25,6 +28,32 @@ public class UIManager : Singleton<UIManager>
         totalCoinsText.text = CurrencySystem.Instance.TotalCoins.ToString();
         lifesText.text = LevelManager.Instance.TotalLives.ToString();
         currentWaveText.text = $"Wave {LevelManager.Instance.CurrentWave}";
+    }
+
+    public void SlowTime()
+    {
+        Time.timeScale = 0.5f;
+    }
+
+    public void ResumeTime()
+    {
+        Time.timeScale = 1f;
+    }
+
+    public void FastTime()
+    {
+        Time.timeScale = 2f;
+    }
+
+    public void ShowGameOverPanel()
+    {
+        gameoverPanel.SetActive(true);
+        gameoverTotalCoinsText.text = CurrencySystem.Instance.TotalCoins.ToString();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void OpenAchievementPanel(bool status)
