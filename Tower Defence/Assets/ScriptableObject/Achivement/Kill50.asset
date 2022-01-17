@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317cb114ecc08194b8feee202fdcabb1, type: 3}
   m_Name: Kill50
   m_EditorClassIdentifier: 
-  ID: Kill20
-  Title: NoobKiller
-  ProgressToUnlock: 20
-  GoldReward: 20
-  Spretie: {fileID: -7323193574722330665, guid: 734a7a6e085e1d3448d13e2832d89580, type: 3}
+  ID: Kill50
+  Title: RegularKiller
+  ProgressToUnlock: 50
+  GoldReward: 100
+  Spretie: {fileID: -356438644246627553, guid: 734a7a6e085e1d3448d13e2832d89580, type: 3}

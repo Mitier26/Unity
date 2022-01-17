@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Kill100
   m_EditorClassIdentifier: 
   ID: Kill100
-  Title: NoobKiller
+  Title: MasterKiller
   ProgressToUnlock: 100
   GoldReward: 500
   Spretie: {fileID: 1390294654648762804, guid: 734a7a6e085e1d3448d13e2832d89580, type: 3}
