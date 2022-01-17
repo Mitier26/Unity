@@ -24,17 +24,21 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float minRandomDelay;
     [SerializeField] private float maxRandomDelay;
 
+    [Header("풀")]
+    [SerializeField] private ObjectPooler enemyWave1To10Pooler;
+    [SerializeField] private ObjectPooler enemyWave11To20Pooler;
+    [SerializeField] private ObjectPooler enemyWave21To30Pooler;
+    [SerializeField] private ObjectPooler enemyWave31To40Pooler;
+    [SerializeField] private ObjectPooler enemyWave41To50Pooler;
+
     private float _spawnTimer;
     private int _enemiesSpawned;
     private int _enemiesRemaining;
-
-    private ObjectPooler _pooler;
 
     private Waypoint _waypoint;
 
     private void Start()
     {
-        _pooler = GetComponent<ObjectPooler>();
         _waypoint = GetComponent<Waypoint>();
 
         _enemiesRemaining = enemyCount;
@@ -57,7 +61,7 @@ public class Spawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        GameObject newInstance = _pooler.GetInstanceFromPool();
+        GameObject newInstance = GetPoller().GetInstanceFromPool();
         Enemy enemy = newInstance.GetComponent<Enemy>();
         enemy.Waypoint = _waypoint;
 
@@ -80,6 +84,34 @@ public class Spawner : MonoBehaviour
         }
 
         return delay;
+    }
+
+    private ObjectPooler GetPoller()
+    {
+        int currentWave = LevelManager.Instance.CurrentWave;
+        if(currentWave <= 1)
+        {
+            return enemyWave1To10Pooler;
+           
+        }
+
+        if(currentWave > 1 && currentWave <= 2)
+        {
+            return enemyWave11To20Pooler;
+        }
+        if (currentWave > 2 && currentWave <= 3)
+        {
+            return enemyWave21To30Pooler;
+        }
+        if (currentWave > 3 && currentWave <= 4)
+        {
+            return enemyWave31To40Pooler;
+        }
+        if (currentWave > 4 && currentWave <= 5)
+        {
+            return enemyWave41To50Pooler;
+        }
+        return null;
     }
 
     private float GetRandomDelay()
