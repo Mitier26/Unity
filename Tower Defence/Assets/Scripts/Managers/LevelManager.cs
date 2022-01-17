@@ -27,6 +27,10 @@ public class LevelManager : Singleton<LevelManager>
     private void WaveCompleted()
     {
         CurrentWave++;
+        AchievementManager.Instance.AddProgress("Waves10", 1);
+        AchievementManager.Instance.AddProgress("Waves20", 1);
+        AchievementManager.Instance.AddProgress("Waves50", 1);
+        AchievementManager.Instance.AddProgress("Waves100", 1);
     }
 
     void OnEnable()

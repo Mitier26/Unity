@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: Kill20
   Title: NoobKiller
-  ProgressToUnlock: 20
+  ProgressToUnlock: 2
   GoldReward: 20
   Spretie: {fileID: -7323193574722330665, guid: 734a7a6e085e1d3448d13e2832d89580, type: 3}
