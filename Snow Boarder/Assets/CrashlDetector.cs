@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CrashlDetector : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class CrashlDetector : MonoBehaviour
     {
         if(collision.tag == "Ground")
         {
-            
+            SceneManager.LoadScene(0);
         }
     }
 }
