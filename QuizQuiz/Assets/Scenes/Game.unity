@@ -1630,6 +1630,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3680347289824113934, guid: e3249e73f2afc5745a72b1ba6dd1a0ad, type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680347289824113934, guid: e3249e73f2afc5745a72b1ba6dd1a0ad, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3249e73f2afc5745a72b1ba6dd1a0ad, type: 3}
 --- !u!224 &6076127125337868098 stripped
