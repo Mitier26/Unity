@@ -14,7 +14,7 @@ public class Quiz : MonoBehaviour
     [Header("Answers")]
     [SerializeField] GameObject[] answerButtons;     //선택지 4개
     int correctAnswerIndex;                         //정답의 인덱스
-    bool hasAnswereEarly;
+    bool hasAnswereEarly = true;
 
     [Header("Button Colors")]
     [SerializeField] Sprite defaultAnswerSprite;    //기본 그림
@@ -33,7 +33,7 @@ public class Quiz : MonoBehaviour
 
     public bool isComplete;
 
-    private void Start()
+    private void Awake()
     {
         timer = FindObjectOfType<Timer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
@@ -46,6 +46,12 @@ public class Quiz : MonoBehaviour
         timerImage.fillAmount = timer.fillFraction;
         if(timer.loadNextQuestion)
         {
+            if (progressBar.value == progressBar.maxValue)
+            {
+                isComplete = true;
+                return;
+            }
+
             hasAnswereEarly = false;
             GetNextQuestion();
             timer.loadNextQuestion = false;
@@ -66,10 +72,7 @@ public class Quiz : MonoBehaviour
         timer.CancleTimer();
         scoreText.text = "Score: " + scoreKeeper.CalculateScore() + "%";
 
-        if(progressBar.value == progressBar.maxValue)
-        {
-            isComplete = true;
-        }
+       
     }
 
     void DisplayQuestion()
