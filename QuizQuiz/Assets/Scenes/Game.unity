@@ -239,7 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionText: {fileID: 819516188}
   question: {fileID: 11400000, guid: 3945da9e01b652d4d82429c50309e891, type: 2}
-  answerPrefab:
+  answerButtons:
   - {fileID: 186767020}
   - {fileID: 1629628033}
   - {fileID: 201256584}
