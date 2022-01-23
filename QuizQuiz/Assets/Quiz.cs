@@ -8,7 +8,8 @@ public class Quiz : MonoBehaviour
 {
     [Header("Questions")]
     [SerializeField] TextMeshProUGUI questionText;  //질문을 출력하는 것
-    [SerializeField] QuestionSO question;           //퀴즈의 정보를 가지고 있는 ScriptabelObject
+    [SerializeField] List<QuestionSO> questions = new List<QuestionSO>();
+    QuestionSO currentQustion;           //퀴즈의 정보를 가지고 있는 ScriptabelObject
 
     [Header("Answers")]
     [SerializeField] GameObject[] answerButtons;     //선택지 4개
@@ -26,8 +27,6 @@ public class Quiz : MonoBehaviour
     private void Start()
     {
         timer = FindObjectOfType<Timer>();
-        DisplayQuestion();
-
     }
 
     private void Update()
@@ -57,13 +56,13 @@ public class Quiz : MonoBehaviour
 
     void DisplayQuestion()
     {
-        questionText.text = question.GetQuestion();
+        questionText.text = currentQustion.GetQuestion();
         // ScriptableObject에서 문제의 정보를 가지고 와 출력
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
             TextMeshProUGUI buttonText = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-            buttonText.text = question.GetAnswer(i);
+            buttonText.text = currentQustion.GetAnswer(i);
             //각 버튼의 TextMeshPro 컴포넌트를 저장
             //각 버튼에 ScriptableObject의 선택지를 출력
         }
@@ -73,7 +72,7 @@ public class Quiz : MonoBehaviour
     {
         Image buttonImage;
 
-        if (index == question.GetCorrectAnswerIndex())  //정답을 선택 했을 경우
+        if (index == currentQustion.GetCorrectAnswerIndex())  //정답을 선택 했을 경우
         {
             questionText.text = "Correct!";
             buttonImage = answerButtons[index].GetComponent<Image>();
@@ -81,8 +80,8 @@ public class Quiz : MonoBehaviour
         }
         else
         {
-            correctAnswerIndex = question.GetCorrectAnswerIndex();
-            string correctAnswer = question.GetAnswer(correctAnswerIndex);
+            correctAnswerIndex = currentQustion.GetCorrectAnswerIndex();
+            string correctAnswer = currentQustion.GetAnswer(correctAnswerIndex);
             questionText.text = "Sorry, the correct answer was \n" + correctAnswer;
             buttonImage = answerButtons[correctAnswerIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
@@ -91,9 +90,27 @@ public class Quiz : MonoBehaviour
 
     void GetNextQuestion()  // 버튼의 상태를 기본값으로 변경
     {
-        SetButtonState(true);
-        SetDefaultButtonSprites();
-        DisplayQuestion();
+        if(questions.Count > 0)
+        {
+            SetButtonState(true);
+            SetDefaultButtonSprites();
+            GetRandomQuestion();
+            DisplayQuestion();
+        }
+        
+    }
+
+    void GetRandomQuestion()
+    {
+        int index = Random.Range(0, questions.Count);
+        currentQustion = questions[index];
+
+        if(questions.Contains(currentQustion))
+        {
+            questions.Remove(currentQustion); ;
+        }
+
+        questions.Remove(currentQustion);
     }
 
     void SetButtonState(bool state)
