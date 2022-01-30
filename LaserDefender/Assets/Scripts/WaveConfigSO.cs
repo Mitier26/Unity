@@ -16,11 +16,13 @@ public class WaveConfigSO : ScriptableObject    // 모노비헤이비어가 아�
     public int GetEnemyCount()
     {
         return enemyPrefabs.Count;
+        // 리스트의 크기를 반환
     }
 
     public GameObject GetEnemyPrefab(int index)
     {
         return enemyPrefabs[index];
+        // 해당 index의 게임오브젝으를 반환
     }
 
     public Transform GetStartingWaypoint()
@@ -50,5 +52,6 @@ public class WaveConfigSO : ScriptableObject    // 모노비헤이비어가 아�
         float spawnTime = Random.Range(timeBetweenEnemySpawns - spawnTimeVariance,
                                         timeBetweenEnemySpawns + spawnTimeVariance);
         return Mathf.Clamp(spawnTime, minimumSpawnTime, float.MaxValue);
+        // 랜덤한 시간을 반환ㄴ
     }
 }
