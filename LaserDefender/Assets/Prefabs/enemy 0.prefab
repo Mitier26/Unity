@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7365672188540231777}
   - component: {fileID: 4232642950902826994}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: enemyRed1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 3425afa606f72904a80c63bca7639d43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: -8443126842294667104}
   - component: {fileID: 4264146411694265306}
   - component: {fileID: -9149453520661032438}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: enemy 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
