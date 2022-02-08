@@ -1169,7 +1169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minValue: 1
-  maxValue: 3
+  maxValue: 5
   input: {fileID: 668306027}
   text: {fileID: 822828139}
   countText: {fileID: 801621055}

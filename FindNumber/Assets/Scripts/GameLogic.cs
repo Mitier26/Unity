@@ -42,6 +42,7 @@ public class GameLogic : MonoBehaviour
         {
             text.text = "잘했어요!";
             buttonText.text = "다시 시작";
+            count = 0;
         }
         else if(randomNum > inputNum)
         {
