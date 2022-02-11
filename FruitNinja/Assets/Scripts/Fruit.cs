@@ -6,6 +6,8 @@ public class Fruit : MonoBehaviour
 {
     public GameObject slicedFruitPrefab;
     public float explosionRadius = 5f;
+    GameManager gm;
+    public int scoreAmount = 3;
 
     public void CreateSlicedFruit()
     {
@@ -19,10 +21,16 @@ public class Fruit : MonoBehaviour
             rigidbody.AddExplosionForce(Random.Range(500, 1000), inst.transform.position, explosionRadius);
         }
 
+        gm.IncreaseScore(scoreAmount);
+
         Destroy(inst, 5f);
         Destroy(gameObject);
     }
 
+    void Start()
+    {
+        gm = FindObjectOfType<GameManager>();
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         Blade b = other.GetComponent<Blade>();
