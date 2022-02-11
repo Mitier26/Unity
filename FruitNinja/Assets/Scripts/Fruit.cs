@@ -16,11 +16,22 @@ public class Fruit : MonoBehaviour
         foreach(Rigidbody rigidbody in rbOnSliced)
         {
             rigidbody.transform.rotation = Random.rotation;
-            rigidbody.AddExplosionForce(Random.Range(500, 1000), transform.position, explosionRadius);
+            rigidbody.AddExplosionForce(Random.Range(500, 1000), inst.transform.position, explosionRadius);
         }
 
         Destroy(inst, 5f);
         Destroy(gameObject);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Blade b = other.GetComponent<Blade>();
+
+        if(!b)
+        {
+            return;
+        }
+        CreateSlicedFruit();
     }
 
     void Update()
