@@ -14,4 +14,10 @@ public class GameManager : MonoBehaviour
         score += addedPoints;
         scoreText.text = score.ToString();
     }
+
+    public void OnBombHit()
+    {
+        // 게임 정지
+        Time.timeScale = 0;
+    }
 }

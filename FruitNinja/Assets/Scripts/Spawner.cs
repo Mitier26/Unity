@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject fruitToSpawnPrefab;
+    public GameObject[] fruitToSpawnPrefabs;
+    public GameObject bombPrefab;
+
     public Transform[] spawnPlaces;
+    public int chanceToSpawnBomb = 10;
     public float minWait = 0.3f;
     public float maxWait = 1f;
     public float minForce = 10;
@@ -24,7 +27,19 @@ public class Spawner : MonoBehaviour
 
             Transform t = spawnPlaces[(Random.Range(0, spawnPlaces.Length))];
 
-            GameObject fruit = Instantiate(fruitToSpawnPrefab, t.position, t.rotation);
+            GameObject go = null;
+            float rnd = Random.Range(0, 100);
+
+            if(rnd < chanceToSpawnBomb)
+            {
+                go = bombPrefab;
+            }
+            else
+            {
+                go = fruitToSpawnPrefabs[Random.Range(0, fruitToSpawnPrefabs.Length)];
+            }
+
+            GameObject fruit = Instantiate(go, t.position, t.rotation);
 
             // 과일을 위로 발싸하는 부분
             fruit.GetComponent<Rigidbody2D>().AddForce(t.transform.up * Random.Range(minForce, maxForce), ForceMode2D.Impulse);
