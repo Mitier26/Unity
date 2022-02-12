@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     {
         GetHighScore();
     }
-    
+
     void GetHighScore()
     {
         highScore = PlayerPrefs.GetInt("HighScore");
@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
         if(score > highScore)
         {
+            // 점수가 최고 점수 보다 높으면 저장
             PlayerPrefs.SetInt("HighScore", score);
             highScoreText.text ="Best : " + score;
         }
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        // 시간의 흐름을 다시 정상으로 만들어 야 한다.
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameOverPanel.SetActive(false);

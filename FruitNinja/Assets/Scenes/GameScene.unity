@@ -1391,6 +1391,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fruitToSpawnPrefabs:
   - {fileID: 728883785081562283, guid: 92477e82f978fb54ca8e8bb91592fa12, type: 3}
+  - {fileID: 8003188935310572191, guid: c20dbe1f7f683c940aabfd8e39fbc360, type: 3}
+  - {fileID: 7899312751355400071, guid: 8c5cd5267fe4c0b4d8aa00afca2eb505, type: 3}
   bombPrefab: {fileID: 8944367777470897845, guid: a75e7e62982177f4799cbd014c278b99, type: 3}
   spawnPlaces:
   - {fileID: 1480175158}
