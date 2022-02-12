@@ -15,8 +15,13 @@ public class GameManager : MonoBehaviour
     [Header("게임오버")]
     public GameObject gameOverPanel;
 
+    [Header("사운드")]
+    public AudioClip[] sliceSounds;
+    AudioSource audioSource;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         GetHighScore();
     }
 
@@ -53,5 +58,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameOverPanel.SetActive(false);
 
+    }
+
+    public void PlayRandomSliceSound()
+    {
+        AudioClip randomSound = sliceSounds[Random.Range(0, sliceSounds.Length)];
+        audioSource.PlayOneShot(randomSound);
     }
 }

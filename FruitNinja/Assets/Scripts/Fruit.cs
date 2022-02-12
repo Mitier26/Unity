@@ -22,6 +22,7 @@ public class Fruit : MonoBehaviour
         }
 
         gm.IncreaseScore(scoreAmount);
+        gm.PlayRandomSliceSound();  // 사운드 출력
 
         Destroy(inst, 5f);
         Destroy(gameObject);
