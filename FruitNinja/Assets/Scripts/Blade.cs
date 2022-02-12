@@ -8,17 +8,17 @@ public class Blade : MonoBehaviour
     Rigidbody2D rb;
     Vector3 lastMousePos;
     Vector3 moveVelo;
-    Collider2D collider;
+    Collider2D collide;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<Collider2D>();
+        collide = GetComponent<Collider2D>();
     }
 
     void FixedUpdate()
     {
-        collider.enabled = IsMouseMoving();
+        collide.enabled = IsMouseMoving();
         SetBladeToMouse();
     }
 
@@ -33,6 +33,9 @@ public class Blade : MonoBehaviour
         // Rigidbody의 위치를 변경한다.
     }
 
+    // 이것이 무엇이냐?
+    // 이것은 마우스가 움직이면 자르는 것이 작동되고
+    // 마우스를 움직이지 않으면 잘라지는 것을 끄는 것
     bool IsMouseMoving()
     {
         Vector3 curMousePos = transform.position;
