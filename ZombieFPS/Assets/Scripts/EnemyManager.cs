@@ -8,15 +8,20 @@ public class EnemyManager : MonoBehaviour
 {
     public GameObject player;
     public Animator enemyAnimator;
+    public float damage = 20f;
 
     void Start()
     {
+        // Player를 찾는다.
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
+        // 네비메쉬의 도착 지점을 플레이어의 위치로 지정한다.
         GetComponent<NavMeshAgent>().destination = player.transform.position;
+
+        // 값의 길이가 1 이상이면 애니메이션을 작동한다.
         if(GetComponent<NavMeshAgent>().velocity.magnitude > 1)
         {
             enemyAnimator.SetBool("isRunning", true);
@@ -31,7 +36,8 @@ public class EnemyManager : MonoBehaviour
     {
         if(collision.gameObject == player)
         {
-            
+            // 플레이어를 공격하는 곳
+            player.GetComponent<PlayerManager>().Hit(damage);
         }
     }
 }
