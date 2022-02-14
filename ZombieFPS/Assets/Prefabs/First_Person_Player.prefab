@@ -460,6 +460,7 @@ GameObject:
   - component: {fileID: 2642615323586664858}
   - component: {fileID: 9187922282414884965}
   - component: {fileID: 9187922282414884966}
+  - component: {fileID: 1411647248625462128}
   m_Layer: 0
   m_Name: First_Person_Player
   m_TagString: Player
@@ -522,6 +523,20 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  jumpHeight: 2
+--- !u!114 &1411647248625462128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655188109372565592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 005ff355271ee724b979f1b3e9f96f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &3004902100467016785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,3 +1402,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4410051066877661230, guid: 6ffe500a9db1a1f4198b80b46bc35bc6, type: 3}
   m_PrefabInstance: {fileID: 6318119013204831658}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5883887795023730005 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 435075660291143935, guid: 6ffe500a9db1a1f4198b80b46bc35bc6, type: 3}
+  m_PrefabInstance: {fileID: 6318119013204831658}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2949339312933785101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5883887795023730005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 703653368a9987942837961cec43f4cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
