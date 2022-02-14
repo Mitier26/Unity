@@ -14,10 +14,13 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    public float jumpHeight = 2f;
 
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        // 확인 지점의 일정 범위 내에 해당 레이어마스크가 있다면
+        // true 없으면 false 를 반환한다.
 
         if(isGrounded && velocity.y < 0 )
         {
@@ -33,5 +36,10 @@ public class PlayerMovement : MonoBehaviour
         // 중력 처리
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        if(Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
     }
 }
