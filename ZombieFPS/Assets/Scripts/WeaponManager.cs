@@ -7,6 +7,12 @@ public class WeaponManager : MonoBehaviour
     public GameObject playerCam;
     public float range = 100f;
     public float damage = 25f;
+    public Animator playerAnimator;
+
+    void Start()
+    {
+
+    }
 
     void Update()
     {
@@ -18,6 +24,8 @@ public class WeaponManager : MonoBehaviour
 
     void Shoot()
     {
+        playerAnimator.SetTrigger("isShooting");
+        
         RaycastHit hit;
 
         if(Physics.Raycast(playerCam.transform.position, transform.forward, out hit, range))

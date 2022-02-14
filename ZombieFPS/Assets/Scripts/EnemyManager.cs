@@ -10,6 +10,8 @@ public class EnemyManager : MonoBehaviour
     public Animator enemyAnimator;
     public float damage = 20f;
     public float health = 100f;
+    
+    public GameManager gameManager;
 
     public void Hit(float damage)
     {
@@ -17,6 +19,7 @@ public class EnemyManager : MonoBehaviour
 
         if(health <= 0)
         {
+            gameManager.enemiesAlive--;
             Destroy(gameObject);
         }
     }
