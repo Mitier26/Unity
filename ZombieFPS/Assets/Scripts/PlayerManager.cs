@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
     public float health = 100;
+    public Text healthText;
+
+    public GameManager gameManager;
 
     public void Hit(float damage)
     {
         health -= damage;
+        healthText.text = health + " Health";
 
         if(health <= 0)
         {   
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            gameManager.EndGame();
         }
     }
 }
