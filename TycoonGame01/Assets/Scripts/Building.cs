@@ -17,6 +17,19 @@ public class Building : MonoBehaviour
     [SerializeField] int buildingLvl = 1;
     [SerializeField] int profitMultiplier = 1;
     [SerializeField] BigInteger profit;
+
+    [SerializeField] int upgradeCostMultiplier = 10;
+
+    BigInteger NextUpgradeCost
+    {
+        get
+        {
+            return buildingLvl * upgradeCostMultiplier;
+        }
+    }
+
+    [SerializeField] GameObject upgradeButton;
+    Text upgradeButtonText ;
     
     public BigInteger Cost
     {
@@ -42,6 +55,10 @@ public class Building : MonoBehaviour
 
         collectProfitButton.SetActive(isUnlocked);
 
+        upgradeButtonText = upgradeButton.GetComponentInChildren<Text>();
+        upgradeButton.SetActive(isUnlocked);
+        UpdateUpgradeUI();
+
         StartCoroutine(MakeProfit());
     }
 
@@ -64,6 +81,11 @@ public class Building : MonoBehaviour
         collectProfitButtonText.text =profit.ToString();
     }
 
+    void UpdateUpgradeUI()
+    {
+        upgradeButtonText.text = $"^\nLVL{buildingLvl}\n{NextUpgradeCost}원";
+    }
+
     public void OnBuyButton()
     {
         if(!isUnlocked)
@@ -76,6 +98,8 @@ public class Building : MonoBehaviour
                 buyButton.SetActive(!isUnlocked);
 
                 collectProfitButton.SetActive(isUnlocked);
+
+                upgradeButton.SetActive(isUnlocked);
             }
         }
     }
@@ -86,6 +110,15 @@ public class Building : MonoBehaviour
         profit = 0;
 
         UpdateProfitUI();
+    }
+
+    public void OnUpgradeButton()
+    {
+        if(MoneyManager.instance.buy(NextUpgradeCost))
+        {
+            buildingLvl += 1;
+            UpdateUpgradeUI();
+        }
     }
 
 }
