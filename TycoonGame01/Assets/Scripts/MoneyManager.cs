@@ -16,7 +16,7 @@ public class MoneyManager : MonoBehaviour
     void UpdateMoneyUI()
     {
         // 소유하고 있는 돈의 정보를 표시한다.
-        moneyText.text = string.Format("{0} 원", Money);
+        moneyText.text = string.Format("{0}", MoneyFormatter.FormatMoney(Money));
         // string.Format을 이용하여 표현!!
         // {0} : Money, {1} : int
     }

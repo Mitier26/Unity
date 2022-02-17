@@ -46,7 +46,8 @@ public class Building : MonoBehaviour
     {
         buyButtonText = buyButton.GetComponentInChildren<Text>();
 
-        buyButtonText.text = Cost.ToString();
+        //buyButtonText.text = Cost.ToString();
+        buyButtonText.text = MoneyFormatter.FormatMoney(Cost);
 
         buyButton.SetActive(!isUnlocked);
 
@@ -80,13 +81,14 @@ public class Building : MonoBehaviour
 
     void UpdateProfitUI()
     {
-        collectProfitButtonText.text =profit.ToString();
+        //collectProfitButtonText.text = profit.ToString();
+        collectProfitButtonText.text = MoneyFormatter.FormatMoney(profit);
     }
 
     // 업그레이드 UI
     void UpdateUpgradeUI()
     {
-        upgradeButtonText.text = $"^\nLVL{buildingLvl}\n{NextUpgradeCost}원";
+        upgradeButtonText.text = $"^\nLVL{buildingLvl}\n{MoneyFormatter.FormatMoney(NextUpgradeCost)}";
     }
 
     public void OnBuyButton()
