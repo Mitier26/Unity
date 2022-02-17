@@ -18,6 +18,7 @@ public class Building : MonoBehaviour
     [SerializeField] int profitMultiplier = 1;
     [SerializeField] BigInteger profit;
 
+    // 업그레이드에 관한것
     [SerializeField] int upgradeCostMultiplier = 10;
 
     BigInteger NextUpgradeCost
@@ -55,6 +56,7 @@ public class Building : MonoBehaviour
 
         collectProfitButton.SetActive(isUnlocked);
 
+        // 업그레이드 초기화
         upgradeButtonText = upgradeButton.GetComponentInChildren<Text>();
         upgradeButton.SetActive(isUnlocked);
         UpdateUpgradeUI();
@@ -81,6 +83,7 @@ public class Building : MonoBehaviour
         collectProfitButtonText.text =profit.ToString();
     }
 
+    // 업그레이드 UI
     void UpdateUpgradeUI()
     {
         upgradeButtonText.text = $"^\nLVL{buildingLvl}\n{NextUpgradeCost}원";
@@ -112,6 +115,7 @@ public class Building : MonoBehaviour
         UpdateProfitUI();
     }
 
+    // 업그레이드 버튼
     public void OnUpgradeButton()
     {
         if(MoneyManager.instance.buy(NextUpgradeCost))
