@@ -11,16 +11,19 @@ public static class MoneyFormatter
 
         if(value >= 1000000000)
         {
-            moneyFormat = "{0:#,0,,, 억}";
+            moneyFormat = "{0:#,0,,, B}";
         }
-        else if(value >= 10000)
+        else if(value >= 1000000)
         {
-            moneyFormat = "{0:#,0,, 만}";
+            //1,000,000
+            moneyFormat = "{0:#,0,, M}";
         }
         else if(value >= 1000)
         {
-            moneyFormat = "{0:#,0, 천}";
+            //1,000
+            moneyFormat = "{0:#,0, K}";
         }
+        
         return string.Format(moneyFormat + "원", value);
     }
 }

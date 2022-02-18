@@ -63,6 +63,7 @@ public class Building : MonoBehaviour
         UpdateUpgradeUI();
 
         StartCoroutine(MakeProfit());
+
     }
 
     IEnumerator MakeProfit()
