@@ -23,7 +23,11 @@ public class MoneyManager : MonoBehaviour
 
     void Start()
     {
-        Money = 0;
+        //Money = 0;
+        // 저장된 돈을 불러 온다.
+        // 저장된 값이 string 이므로 변환을 해 주어야 한다.
+        // PlayerPrefs 의 int 는 BigInteger 와 달라 큰수를 저장할 수 없다.
+        Money = BigInteger.Parse(PlayerPrefs.GetString("Money", "0"));
         UpdateMoneyUI();
         instance = this;
     }
@@ -60,4 +64,28 @@ public class MoneyManager : MonoBehaviour
         }
     }
 
+    // 돈을 저장한다.
+    void SaveMoney()
+    {
+        PlayerPrefs.SetString("Money", Money.ToString());
+
+        PlayerPrefs.Save();
+    }
+
+    // 앱이 일시정지되었을 때 저장한다.
+    void OnApplicationPause(bool pause)
+    {
+        if(pause)
+        {
+            SaveMoney();
+        }
+    }
+    // 게임이 종료될때 저장한다.
+    // 중요한것이다.접속 보상 같은 것을 만들 때 사용한다.
+    // 게임이 죵료되면 시간을 저장하고 
+    // 다시 접속했을 때 보상을 주는 방식이다.
+    void OnApplicationQuit()
+    {
+        SaveMoney();
+    }
 }
