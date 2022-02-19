@@ -16,6 +16,6 @@ public class StoreManager : MonoBehaviour
 
     public void OnHireManagerPurchaseComplete()
     {
-        
+        FindObjectOfType<ProfitCollector>().HireManager();
     }
 }

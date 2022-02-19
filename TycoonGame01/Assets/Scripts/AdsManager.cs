@@ -63,7 +63,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     // 광고가 준비되었을 때
     public void OnUnityAdsReady(string placementId)
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
 }
